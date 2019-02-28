@@ -1,14 +1,20 @@
 // reducer 返回一个新的状态
-import { GET_DEMO1 } from '../actions/types';
+import { GET_DEMO1,GET_BOOL } from '../actions/types';
 const initialState = {
-    item:''
+    item:'',
+    show:false
 }
 export default function (state=initialState,action) {
-    console.log(action.type,'action.type')
     switch(action.type) {
         case GET_DEMO1:
         return {
             ...state,
+            item: action.payLoad
+        }
+        case GET_BOOL:
+        return {
+            ...state,
+            show: action.payLoad1,
             item: action.payLoad
         }
         default: 

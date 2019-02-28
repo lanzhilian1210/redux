@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Provider} from 'react-redux';  //引入redux容器
-import {store} from './store'   // 
+import {store} from './redux/store/store'   // 
 import './App.css';
 import Demo from './demo1';
 import Demo2 from './demo2';

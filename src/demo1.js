@@ -1,27 +1,29 @@
 import React, { Component } from 'react';
-import ProptTypes from 'prop-types'
 import { connect } from 'react-redux';
-import { getDemo1 } from './actions/demo1Actions'
+import { getDemo1,changeState } from './redux/actions/demo1Actions'
 class demo1 extends Component {
   componentDidMount() {
     // 触发action操作
     this.props.getDemo1();
   }
+  handleClick() {
+    // 触发action
+    this.props.changeState();
+  }
   render() {
     return (
       <div className="demo1">
-        <div>{this.props.demo1}</div>
+      <div>{this.props.newDemoState} + demo1组件</div>
+        <button onClick={this.handleClick.bind(this)}>button</button>
       </div>
     );
   }
 }
 
-ProptTypes.propTypes = {
-  demo1:ProptTypes.string.isRequired     //强调数据类型
-}
 
 const mapStateToProps = state =>({
-  demo1:state.Demo1Reducer.item
+  newDemoState:state.Demo1Reducer.item,
+  newDemoBool:state.Demo1Reducer.show
 })
 
-export default  connect(mapStateToProps, { getDemo1 })(demo1);   //{} 里面可以是多个方法
+export default  connect(mapStateToProps, { getDemo1,changeState })(demo1);   //{} 里面可以是多个方法
